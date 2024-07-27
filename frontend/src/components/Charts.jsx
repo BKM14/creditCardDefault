@@ -24,7 +24,8 @@ const DoughnutChart = ({ dataInput, title }) => {
     };
 
     const options = {
-        responsive: true,
+        responsive: false,
+        maintainAspectRatio: false,
         plugins: {
             legend: {
                 position: 'bottom',
