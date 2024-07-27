@@ -1,7 +1,7 @@
-Flask @ file:///croot/flask_1702980023242/work
+Flask
 Flask-Cors==4.0.1
-pandas @ file:///croot/pandas_1702317985682/work/dist/pandas-2.1.4-cp311-cp311-linux_x86_64.whl#sha256=a15c481f210e34ff91dac4944a5f8f0fe38ff2c3afa7c45ea621ff460d6f9b57
-scikit-image @ file:///croot/scikit-image_1707346116243/work
-scikit-learn @ file:///croot/scikit-learn_1684954695550/work
-scipy @ file:///croot/scipy_1701295040508/work/dist/scipy-1.11.4-cp311-cp311-linux_x86_64.whl#sha256=4a1942ba48a330f141b1056df960d77f9be4cee3e2d999d754e791da201edffd
-seaborn @ file:///work/ci_py311/seaborn_1676845747354/work
+pandas
+scikit-image
+scikit-learn
+scipy
+seaborn
