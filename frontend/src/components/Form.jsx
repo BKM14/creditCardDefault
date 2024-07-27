@@ -52,28 +52,28 @@ const Form = () => {
 
   return (
     <div>
-        <div className='mx-auto md:w-4/5 lg:w-3/5 p-4 border-black shadow-2xl border rounded-md mt-8'>
+        <div className='mx-auto w-full md:w-4/5 lg:w-3/5 p-4 border-black shadow-2xl border rounded-md mt-8'>
             <p className='font-bold text-2xl text-black'>Credit Card Defaulter Predictor</p>
             <p className='font-light text-gray-600'>Answer the following questions to get a prediction on the likelihood of defaulting.</p>
             <form method='POST'>
                 <div className="grid gap-3 mb-6 md:grid-cols-2">
-                    <div>
+                    <div className='w-4/5 lg:w-full'>
                         <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 ">First name</label>
                         <input {...register("firstName")} type="text" id="firstName" className="bg-gray-50 border-2 border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="John" required />
                     </div>
-                    <div>
+                    <div className='w-4/5 lg:w-full'>
                         <label htmlFor="lastName" className="block mb-2 text-sm font-medium text-gray-900 ">Last name</label>
                         <input {...register("lastName")} type="text" id="lastName" className="bg-gray-50 border-2 border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="Doe" required />
                     </div>
-                    <div>
+                    <div className='w-4/5 lg:w-full'>
                         <label htmlFor="creditLimit" className="block mb-2 text-sm font-medium text-gray-900 ">Credit Limit</label>
                         <input {...register("creditLimit")} type="text" id="creditLimit" className="bg-gray-50 border-2 border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: $40000" required />
                     </div>
-                    <div>
+                    <div className='w-4/5 lg:w-full'>
                         <label htmlFor="age" className="block mb-2 text-sm font-medium text-gray-900 ">Age</label>
                         <input {...register("age", { min: 18, max: 99 })} type="text" id="age" className="bg-gray-50 border-2 border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="ex: 27" required />
                     </div> 
-                    <div>
+                    <div className='w-4/5 lg:w-full'>
                         <label htmlFor="educationLevel" className="block mb-2 text-sm font-medium text-gray-900 ">Education Level</label>
                         <select {...register("educationLevel")} id="educationLevel" className="bg-gray-50 border-2 border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected>Choose an education level</option>
@@ -83,7 +83,7 @@ const Form = () => {
                             <option value="4">Others</option>
                         </select>
                     </div>
-                    <div>
+                    <div className='w-4/5 lg:w-full'>
                         <label htmlFor="maritalStatus" className="block mb-2 text-sm font-medium text-gray-900 ">Marital Status</label>
                         <select {...register("maritalStatus")} id="maritalStatus" className="bg-gray-50 border-2 border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option selected>Marital Status</option>
@@ -92,7 +92,7 @@ const Form = () => {
                             <option value="3">Other</option>
                         </select>
                     </div>
-                    <div>
+                    <div className='w-4/5 lg:w-full'>
                         <label htmlFor="sex" className="block mb-2 text-sm font-medium text-gray-900 ">Sex</label>
                         <select {...register("sex")} id="sex" className="bg-gray-50 border-2 border-black text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option type='checkbox' selected>Select</option>
@@ -101,7 +101,7 @@ const Form = () => {
                             <option value="3">Others</option>
                         </select>
                     </div>
-                    <div>
+                    <div className='w-4/5 lg:w-full'>
                         <label htmlFor="model" className="block mb-2 text-sm font-medium text-gray-900 ">Model</label>
 
                         <Multiselect options={formState.options} onSelect={onSelect} showCheckbox={true} onRemove={onRemove} displayValue='key'/>

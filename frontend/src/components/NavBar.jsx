@@ -2,12 +2,12 @@ import { Link } from "react-router-dom"
 
 const NavBar = () => {
   return (
-    <header className='flex justify-between shadow-sm h-16 '>
-        <div className='flex flex-row items-center'>
+    <header className='flex justify-between shadow-sm h-16'>
+        <div className='flex flex-row items-center mx-auto sm:mx-0'>
             <img src="credit-card.png" alt="Logo" style={{height: 50, marginLeft: 8}}/>
             <Link to={'/'} className='ml-2 font-bold text-lg md:text-xl lg:text-3xl'>CreditGuard</Link >
         </div> 
-        <div className='flex items-center text-sm md:text-lg lg:text-xl'>
+        <div className='hidden sm:flex  items-center text-sm md:text-lg lg:text-xl'>
             <Link to={'/visualizations'} className='mx-1  md:mx-4 hover:bg-red-600 hover:font-bold hover:text-white duration-300 p-2 rounded'>Visualizations</Link >
             <Link to={'/features'} className='mx-1  md:mx-4 hover:bg-red-600 hover:font-bold hover:text-white duration-300 p-2 rounded'>Features</Link >
             <Link to={'/contact'} className='mx-1  md:mx-4 hover:bg-red-600 hover:font-bold hover:text-white duration-300 p-2 rounded'>Contact</Link >
