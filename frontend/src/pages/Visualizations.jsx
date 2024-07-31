@@ -68,6 +68,7 @@ const Visualizations = () => {
                     })
                 }
             </div>
+            <img src='Combined ROC.png'></img>
         </div>
       
       <Footer></Footer>
