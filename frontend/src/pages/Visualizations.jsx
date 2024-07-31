@@ -12,7 +12,7 @@ const Visualizations = () => {
     }
 
     const plots = [], images = [];
-    for (let i = 0; i <= 17; i++) plots.push(i);
+    for (let i = 0; i <= 18; i++) plots.push(i);
     images.push("AdaBoost Classifier");
     images.push("Bagging Classifier");
     images.push("Decision Tree Classifier");
