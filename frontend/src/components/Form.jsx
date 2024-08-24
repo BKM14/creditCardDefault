@@ -10,21 +10,30 @@ const Form = () => {
     const { register, getValues } = useForm();
     const [selectedModels, setSelectedModels] = useState([]);
     const [results, setResults] = useState({})
+    const [loading, setLoading] = useState(false);
     const ref = useRef(null);
 
 
     const onSubmit = async () => {
-        const requestObject = createRequestObject(getValues(), selectedModels);
-        const response = await fetch("https://creditcarddefault.onrender.com/predict", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: requestObject
-        })
-        const data = await response.json();
-        setResults(data)
-        ref.current?.scrollIntoView({behavior: 'smooth'});
+        try {
+            setLoading(true);
+            const requestObject = createRequestObject(getValues(), selectedModels);
+            const response = await fetch("https://creditcarddefault.onrender.com/predict", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: requestObject
+            })
+            const data = await response.json();
+            setResults(data)
+            ref.current?.scrollIntoView({behavior: 'smooth'});
+        } catch (e) {
+            alert("Error: " + e);
+        } finally {
+            setLoading(false);
+        }
+        
         
     }
 
@@ -55,7 +64,7 @@ const Form = () => {
         <div className='mx-auto w-full md:w-4/5 lg:w-3/5 p-4 border-black shadow-2xl border rounded-md mt-8'>
             <p className='font-bold text-2xl text-black'>Credit Card Defaulter Predictor</p>
             <p className='font-light text-gray-600'>Answer the following questions to get a prediction on the likelihood of defaulting.</p>
-            <form method='POST'>
+            <form method='POST' className='w-full'>
                 <div className="grid gap-3 mb-6 md:grid-cols-2">
                     <div className='w-4/5 lg:w-full'>
                         <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 ">First name</label>
@@ -126,10 +135,35 @@ const Form = () => {
                     </div>
                     <label htmlFor="remember" className="ms-2 text-sm font-medium text-gray-900">I agree with the <a href="#" className="text-blue-600 hover:underline dark:text-blue-500">terms and conditions</a>.</label>
                 </div>
-                <button onClick={onSubmit} disabled={terms == 0 ? true : false} type="button" className="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Predict</button>
+                <button
+                    onClick={onSubmit}
+                    disabled={terms != 0 && !loading ? false : true}
+                    type="button" className="flex justify-center items-center text-white py-3 w-full bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm">
+                    {loading ? (
+                        <svg className="animate-spin h-5 w-5 mr-3 text-white"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4">
+                            </circle>
+                            <path
+                                className="opacity-75"
+                                fill="currentColor"
+                                d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                            ></path>
+                        </svg>
+                    ) : null}
+                    {loading ? 'Loading...' : 'Predict'}
+                    </button>            
             </form>
         </div>
-        {Object.keys(results).length != 0 && <div ref={ref} className='min-h-screen mt-2 flex flex-col justify-center bg-gray-200'>
+    {Object.keys(results).length != 0 && <div ref={ref} className='min-h-screen mt-2 flex flex-col justify-center bg-gray-200'>
             <p className='text-black text-4xl text-center font-bold'>Understand your financial risk</p>
             {(<div className='grid lg:grid-cols-3 sm:grid-cols-1 md:grid-cols-2 lg:w-95% md:w-4/5 mx-auto'>
                     {Object.keys(results).map((result, index) => {
