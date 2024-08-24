@@ -67,8 +67,8 @@ const Visualizations = () => {
                         </div>)
                     })
                 }
+                <img src='Combined ROC.png' className='shadow-xl m-2 w-[90%]'></img>
             </div>
-            <img src='Combined ROC.png'></img>
         </div>
       
       <Footer></Footer>
